@@ -38,10 +38,18 @@ func init() {
 	globalRands.random = rand.New(rand.NewSource(seed.Int64()))
 }
 
-func RandomString(length int) string {
+func RandomString(length int, charSets ...string) string {
+	chars := globalRands.chars
+	if len(charSets) > 0 {
+		for _, charSet := range charSets {
+			chars = append(chars, []rune(charSet)...)
+		}
+		chars = Unique(chars)
+	}
+
 	runes := make([]rune, length)
 	for i := 0; i < length; i++ {
-		runes[i] = globalRands.chars[globalRands.random.Int()%len(globalRands.chars)]
+		runes[i] = chars[globalRands.random.Int()%len(chars)]
 	}
 
 	return string(runes)
