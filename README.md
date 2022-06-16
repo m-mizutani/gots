@@ -68,6 +68,24 @@ fmt.Println(gots.RandomString(32, "最高技術責任者"))
 // Output: 技者責責任術任最高責責最者者最任術任術者最任最最高技術術責最高任
 ```
 
+## Value to Pointer
+
+```go
+type input struct {
+    ts *int64
+}
+
+// Compile error
+// i := input {
+//     ts: &(time.Now().Unix()),
+// }
+
+
+i := input {
+    ts: gots.Ptr(time.Now().Unix())
+}
+```
+
 ## License
 
 Apache License 2.0
