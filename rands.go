@@ -41,6 +41,7 @@ func init() {
 func RandomString(length int, charSets ...string) string {
 	chars := globalRands.chars
 	if len(charSets) > 0 {
+		chars = []rune{}
 		for _, charSet := range charSets {
 			chars = append(chars, []rune(charSet)...)
 		}
