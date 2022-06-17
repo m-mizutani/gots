@@ -63,9 +63,11 @@ fmt.Println(out)
 ## Random string
 
 ```go
+// Returns 6 random characters
 fmt.Println(gots.RandomString(6))
 // Output: H9ZBvu
 
+// Returns 32 random characters from "最高技術責任者"
 fmt.Println(gots.RandomString(32, "最高技術責任者"))
 // Output: 技者責責任術任最高責責最者者最任術任術者最任最最高技術術責最高任
 ```
