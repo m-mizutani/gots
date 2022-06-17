@@ -82,9 +82,8 @@ type input struct {
 //     ts: &(time.Now().Unix()),
 // }
 
-
 i := input {
-    ts: gots.Ptr(time.Now().Unix())
+    ts: gots.Ptr(time.Now().Unix()),
 }
 ```
 
