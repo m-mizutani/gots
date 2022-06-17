@@ -1,4 +1,6 @@
-# gots: Go Tools Suite
+# gots: Go Tools Suite [![test](https://github.com/m-mizutani/gots/actions/workflows/test.yml/badge.svg)](https://github.com/m-mizutani/gots/actions/workflows/test.yml) [![gosec](https://github.com/m-mizutani/gots/actions/workflows/gosec.yml/badge.svg)](https://github.com/m-mizutani/gots/actions/workflows/gosec.yml) [![trivy](https://github.com/m-mizutani/gots/actions/workflows/trivy.yml/badge.svg)](https://github.com/m-mizutani/gots/actions/workflows/trivy.yml) [![Go Reference](https://pkg.go.dev/badge/github.com/m-mizutani/gots.svg)](https://pkg.go.dev/github.com/m-mizutani/gots)
+
+Simple and easy, but tedious function set in Go.
 
 ## Slice functions
 
