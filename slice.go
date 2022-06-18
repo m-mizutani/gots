@@ -60,3 +60,12 @@ func CountIf[T any](input []T, f func(v T) bool) int {
 	}
 	return c
 }
+
+func Contains[T comparable](input []T, target T) bool {
+	for i := range input {
+		if target == input[i] {
+			return true
+		}
+	}
+	return false
+}

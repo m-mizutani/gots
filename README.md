@@ -60,6 +60,16 @@ fmt.Println(out)
 // Output: 3
 ```
 
+### Contains
+
+```go
+fmt.Println(gots.Contains([]string{"A", "B", "A", "C", "B"}, "B"))
+// Output: true
+
+fmt.Println(gots.Contains([]string{"A", "B", "A", "C", "B"}, "X"))
+// Output: false
+```
+
 ## Random string
 
 ```go

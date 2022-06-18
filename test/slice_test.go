@@ -79,3 +79,8 @@ func ExampleCountIf() {
 	fmt.Println(out)
 	// Output: 3
 }
+
+func ExampleContains() {
+	fmt.Println(gots.Contains([]string{"A", "B", "A", "C", "B"}, "B"))
+	// Output: true
+}
