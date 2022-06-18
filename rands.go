@@ -38,6 +38,7 @@ func init() {
 	globalRands.random = rand.New(rand.NewSource(seed.Int64()))
 }
 
+// RandomString returns string of random `length` characters. Default character sets to generate random string are lower and upper alphabets (LowerSet and UpperSet), numbers (NumberSet) and marks (MarkSet). If charSets is provided, RandomString uses only the provided characters to generate string.
 func RandomString(length int, charSets ...string) string {
 	chars := globalRands.chars
 	if len(charSets) > 0 {
