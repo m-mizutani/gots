@@ -99,6 +99,22 @@ i := input {
 }
 ```
 
+## Stack trace
+
+### Get caller
+
+```go
+func hello() {
+	fmt.Println(gots.GetCaller())
+}
+
+func ExampleGetCaller() {
+	hello()
+	// Output: github.com/m-mizutani/gots/test_test.ExampleGetCaller
+}
+```
+
+
 ## License
 
 Apache License 2.0
