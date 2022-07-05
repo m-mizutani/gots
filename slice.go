@@ -88,3 +88,15 @@ func ToMap[T any, K comparable, V any](input []T, f func(T) (K, V)) map[K]V {
 
 	return resp
 }
+
+// ToSlice creates map[K]V from slice and func(T) (K, V)
+func ToSlice[K comparable, V, T any](input map[K]V, f func(K, V) T) []T {
+	var resp []T
+
+	for k, v := range input {
+		t := f(k, v)
+		resp = append(resp, t)
+	}
+
+	return resp
+}
