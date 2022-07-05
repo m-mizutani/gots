@@ -76,3 +76,15 @@ func Contains[T comparable](input []T, target T) bool {
 	}
 	return false
 }
+
+// ToMap creates map[K]V from slice and func(T) (K, V)
+func ToMap[T any, K comparable, V any](input []T, f func(T) (K, V)) map[K]V {
+	resp := map[K]V{}
+
+	for i := range input {
+		k, v := f(input[i])
+		resp[k] = v
+	}
+
+	return resp
+}
