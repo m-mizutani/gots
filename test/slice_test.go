@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/m-mizutani/gots"
+	"github.com/m-mizutani/gots/slice"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
 func TestMap(t *testing.T) {
 	input := []string{"blue", "orange", "red"}
-	output := gots.Map(input, func(v string) int {
+	output := slice.Map(input, func(v string) int {
 		return len(v)
 	})
 	require.Len(t, output, 3)
@@ -21,7 +21,7 @@ func TestMap(t *testing.T) {
 }
 
 func TestFilter(t *testing.T) {
-	out := gots.Filter([]int{1, 2, 3, 4, 5}, func(v int) bool {
+	out := slice.Filter([]int{1, 2, 3, 4, 5}, func(v int) bool {
 		return v%2 == 0
 	})
 	require.Len(t, out, 2)
@@ -30,14 +30,14 @@ func TestFilter(t *testing.T) {
 }
 
 func TestReduce(t *testing.T) {
-	out := gots.Reduce([]int{1, 2, 3, 4, 5}, func(p, c int) int {
+	out := slice.Reduce([]int{1, 2, 3, 4, 5}, func(p, c int) int {
 		return p + c
 	}, 10)
 	assert.Equal(t, 25, out)
 }
 
 func ExampleMap() {
-	out := gots.Map([]string{"blue", "orange", "red"}, func(v string) int {
+	out := slice.Map([]string{"blue", "orange", "red"}, func(v string) int {
 		return len(v)
 	})
 	fmt.Println(out)
@@ -45,7 +45,7 @@ func ExampleMap() {
 }
 
 func ExampleFilter() {
-	out := gots.Filter([]int{1, 2, 3, 4, 5}, func(v int) bool {
+	out := slice.Filter([]int{1, 2, 3, 4, 5}, func(v int) bool {
 		return v%2 == 0
 	})
 	fmt.Println(out)
@@ -53,7 +53,7 @@ func ExampleFilter() {
 }
 
 func ExampleReduce() {
-	out := gots.Reduce([]int{1, 2, 3, 4, 5}, func(p, c int) int {
+	out := slice.Reduce([]int{1, 2, 3, 4, 5}, func(p, c int) int {
 		return p + c
 	}, 10)
 	fmt.Println(out)
@@ -61,19 +61,19 @@ func ExampleReduce() {
 }
 
 func ExampleUnique() {
-	out := gots.Unique([]string{"A", "B", "A", "C", "B"})
+	out := slice.Unique([]string{"A", "B", "A", "C", "B"})
 	fmt.Println(out)
 	// Output: [A B C]
 }
 
 func ExampleCount() {
-	out := gots.Count([]string{"A", "B", "A", "C", "B"}, "B")
+	out := slice.Count([]string{"A", "B", "A", "C", "B"}, "B")
 	fmt.Println(out)
 	// Output: 2
 }
 
 func ExampleCountIf() {
-	out := gots.CountIf([]string{"A", "B", "A", "C", "B"}, func(v string) bool {
+	out := slice.CountIf([]string{"A", "B", "A", "C", "B"}, func(v string) bool {
 		return v == "A" || v == "C"
 	})
 	fmt.Println(out)
@@ -81,6 +81,6 @@ func ExampleCountIf() {
 }
 
 func ExampleContains() {
-	fmt.Println(gots.Contains([]string{"A", "B", "A", "C", "B"}, "B"))
+	fmt.Println(slice.Contains([]string{"A", "B", "A", "C", "B"}, "B"))
 	// Output: true
 }

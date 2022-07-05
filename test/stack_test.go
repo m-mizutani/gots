@@ -3,11 +3,11 @@ package gots_test
 import (
 	"fmt"
 
-	"github.com/m-mizutani/gots"
+	"github.com/m-mizutani/gots/stack"
 )
 
 func hello() {
-	fmt.Println(gots.GetCaller())
+	fmt.Println(stack.GetCaller())
 }
 
 func ExampleGetCaller() {

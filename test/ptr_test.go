@@ -3,7 +3,7 @@ package gots_test
 import (
 	"time"
 
-	"github.com/m-mizutani/gots"
+	"github.com/m-mizutani/gots/ptr"
 )
 
 func ExamplePtr() {
@@ -12,6 +12,6 @@ func ExamplePtr() {
 	}
 
 	_ = input{
-		ts: gots.Ptr(time.Now().Unix()),
+		ts: ptr.To(time.Now().Unix()),
 	}
 }

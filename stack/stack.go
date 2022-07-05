@@ -1,4 +1,4 @@
-package gots
+package stack
 
 import "runtime"
 
