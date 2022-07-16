@@ -58,3 +58,19 @@ func New(length int, charSets ...string) string {
 
 	return string(runes)
 }
+
+func Alphabet(length int) string {
+	return New(length, LowerSet, UpperSet)
+}
+
+func LowerCase(length int) string {
+	return New(length, LowerSet)
+}
+
+func UpperCase(length int) string {
+	return New(length, UpperSet)
+}
+
+func AlphaNum(length int) string {
+	return New(length, LowerSet, UpperSet, NumberSet)
+}

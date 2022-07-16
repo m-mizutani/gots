@@ -7,7 +7,7 @@ Simple and easy, but tedious function set in Go.
 ### Map
 
 ```go
-out := gots.Map([]string{"blue", "orange", "red"}, func(v string) int {
+out := slice.Map([]string{"blue", "orange", "red"}, func(v string) int {
     return len(v)
 })
 fmt.Println(out)
@@ -17,7 +17,7 @@ fmt.Println(out)
 ### Filter
 
 ```go
-out := gots.Filter([]int{1, 2, 3, 4, 5}, func(v int) bool {
+out := slice.Filter([]int{1, 2, 3, 4, 5}, func(v int) bool {
     return v%2 == 0
 })
 fmt.Println(out)
@@ -27,7 +27,7 @@ fmt.Println(out)
 ### Reduce
 
 ```go
-out := gots.Reduce([]int{1, 2, 3, 4, 5}, func(p, c int) int {
+out := slice.Reduce([]int{1, 2, 3, 4, 5}, func(p, c int) int {
     return p + c
 }, 10)
 fmt.Println(out)
@@ -37,7 +37,7 @@ fmt.Println(out)
 ### Uniq
 
 ```go
-out := gots.Unique([]string{"A", "B", "A", "C", "B"})
+out := slice.Unique([]string{"A", "B", "A", "C", "B"})
 fmt.Println(out)
 // Output: [A B C]
 ```
@@ -45,7 +45,7 @@ fmt.Println(out)
 ### Count
 
 ```go
-out := gots.Count([]string{"A", "B", "A", "C", "B"}, "B")
+out := slice.Count([]string{"A", "B", "A", "C", "B"}, "B")
 fmt.Println(out)
 // Output: 2
 ```
@@ -53,7 +53,7 @@ fmt.Println(out)
 ### CountIf
 
 ```go
-out := gots.CountIf([]string{"A", "B", "A", "C", "B"}, func(v string) bool {
+out := slice.CountIf([]string{"A", "B", "A", "C", "B"}, func(v string) bool {
     return v == "A" || v == "C"
 })
 fmt.Println(out)
@@ -63,10 +63,10 @@ fmt.Println(out)
 ### Contains
 
 ```go
-fmt.Println(gots.Contains([]string{"A", "B", "A", "C", "B"}, "B"))
+fmt.Println(slice.Contains([]string{"A", "B", "A", "C", "B"}, "B"))
 // Output: true
 
-fmt.Println(gots.Contains([]string{"A", "B", "A", "C", "B"}, "X"))
+fmt.Println(slice.Contains([]string{"A", "B", "A", "C", "B"}, "X"))
 // Output: false
 ```
 
@@ -74,12 +74,28 @@ fmt.Println(gots.Contains([]string{"A", "B", "A", "C", "B"}, "X"))
 
 ```go
 // Returns 6 random characters
-fmt.Println(gots.RandomString(6))
+fmt.Println(rands.New(6))
 // Output: H9ZBvu
 
 // Returns 32 random characters from "最高技術責任者"
-fmt.Println(gots.RandomString(32, "最高技術責任者"))
+fmt.Println(rands.New(32, "最高技術責任者"))
 // Output: 技者責責任術任最高責責最者者最任術任術者最任最最高技術術責最高任
+
+// Returns 6 random alphabet (both of lower and upper) characters
+fmt.Println(rands.Alphabet(6))
+// Output: UJieDx
+
+// Returns 6 random lower case alphabet characters
+fmt.Println(rands.LowerCase(6))
+// Output: dgffld
+
+// Returns 6 random upper case alphabet characters
+fmt.Println(rands.UpperCase(6))
+// Output: DUQPEK
+
+// Returns 6 random number characters
+fmt.Println(rands.Number(6))
+// Output: 784323
 ```
 
 ## Value to Pointer
@@ -95,7 +111,7 @@ type input struct {
 // }
 
 i := input {
-    ts: gots.Ptr(time.Now().Unix()),
+    ts: ptr.To(time.Now().Unix()),
 }
 ```
 
@@ -105,7 +121,7 @@ i := input {
 
 ```go
 func hello() {
-	fmt.Println(gots.GetCaller())
+	fmt.Println(stack.GetCaller())
 }
 
 func ExampleGetCaller() {
