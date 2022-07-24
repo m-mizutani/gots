@@ -70,6 +70,17 @@ fmt.Println(slice.Contains([]string{"A", "B", "A", "C", "B"}, "X"))
 // Output: false
 ```
 
+### Flatten
+
+```go
+	fmt.Println(slice.Flatten(
+		[]string{"A", "B"},
+		[]string{"C", "D", "E"},
+		[]string{"F"},
+	))
+	// Output: [A B C D E F]
+```
+
 ## Random string
 
 ```go

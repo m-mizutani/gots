@@ -84,3 +84,12 @@ func ExampleContains() {
 	fmt.Println(slice.Contains([]string{"A", "B", "A", "C", "B"}, "B"))
 	// Output: true
 }
+
+func ExampleFlatten() {
+	fmt.Println(slice.Flatten(
+		[]string{"A", "B"},
+		[]string{"C", "D", "E"},
+		[]string{"F"},
+	))
+	// Output: [A B C D E F]
+}

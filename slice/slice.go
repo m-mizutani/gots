@@ -122,3 +122,21 @@ func FromKeys[K comparable, V any](input map[K]V) []K {
 
 	return resp
 }
+
+// Flatten creates concatenated array from lists
+func Flatten[T any](lists ...[]T) []T {
+	size := 0
+	for i := range lists {
+		size += len(lists[i])
+	}
+
+	resp := make([]T, size)
+	p := 0
+	for i := range lists {
+		for j := range lists[i] {
+			resp[p] = lists[i][j]
+			p++
+		}
+	}
+	return resp
+}
