@@ -74,3 +74,7 @@ func UpperCase(length int) string {
 func AlphaNum(length int) string {
 	return New(length, LowerSet, UpperSet, NumberSet)
 }
+
+func Number(length int) string {
+	return New(length, NumberSet)
+}
