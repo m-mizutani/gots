@@ -51,9 +51,14 @@ func New(length int, charSets ...string) string {
 		chars = slice.Unique(chars)
 	}
 
+	random, err := RandomUint64Array(length)
+	if err != nil {
+		panic("failed to generate random string: " + err.Error())
+	}
+
 	runes := make([]rune, length)
 	for i := 0; i < length; i++ {
-		runes[i] = chars[globalRands.random.Int()%len(chars)]
+		runes[i] = chars[random[i]%uint64(len(chars))]
 	}
 
 	return string(runes)
