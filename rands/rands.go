@@ -1,12 +1,6 @@
 package rands
 
 import (
-	cryptoRand "crypto/rand"
-
-	"math"
-	"math/big"
-	"math/rand"
-
 	"github.com/m-mizutani/gots/slice"
 )
 
@@ -19,30 +13,15 @@ const (
 	defaultRandCharSet = LowerSet + UpperSet + NumberSet
 )
 
-type rands struct {
-	chars  []rune
-	random *rand.Rand
-}
-
-var globalRands *rands
+var defaultChars []rune
 
 func init() {
-	globalRands = &rands{
-		chars: slice.Unique([]rune(defaultRandCharSet)),
-	}
-
-	seed, err := cryptoRand.Int(cryptoRand.Reader, big.NewInt(math.MaxInt64))
-	if err != nil {
-		panic("failed to init crypto/rand: " + err.Error())
-	}
-
-	// #nosec: using crypto/rand for math/rand.seed
-	globalRands.random = rand.New(rand.NewSource(seed.Int64()))
+	defaultChars = []rune(defaultRandCharSet)
 }
 
 // New returns string of random `length` characters. Default character sets to generate random string are lower and upper alphabets (LowerSet and UpperSet), numbers (NumberSet) and marks (MarkSet). If charSets is provided, New uses only the provided characters to generate string.
 func New(length int, charSets ...string) string {
-	chars := globalRands.chars
+	chars := defaultChars
 	if len(charSets) > 0 {
 		chars = []rune{}
 		for _, charSet := range charSets {
@@ -51,9 +30,14 @@ func New(length int, charSets ...string) string {
 		chars = slice.Unique(chars)
 	}
 
+	random, err := RandomUint64Array(length)
+	if err != nil {
+		panic("failed to generate random string: " + err.Error())
+	}
+
 	runes := make([]rune, length)
 	for i := 0; i < length; i++ {
-		runes[i] = chars[globalRands.random.Int()%len(chars)]
+		runes[i] = chars[random[i]%uint64(len(chars))]
 	}
 
 	return string(runes)
